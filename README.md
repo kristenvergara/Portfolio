@@ -1,2 +1,2 @@
-# H1 Kristen Vergara Portfolio
-# H2 Kristen's Data Science Portfolio
+# Kristen Vergara Portfolio
+Kristen's Data Science Portfolio
