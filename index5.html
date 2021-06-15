@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title> INFO 3300 HOMEWORK 5 Kristen Vergara</title>
+  <title> </title>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://d3js.org/topojson.v2.min.js"></script>
   <style>
@@ -34,82 +34,7 @@
   <svg id="ny" height="700" width="800">
   </svg>
   <script>
-//PROBLEM 1
-    const svg = d3.select("#mercator");
-    const width = svg.attr("width");
-    const height = svg.attr("height");
-    const margin = { top: 20, right: 20, bottom: 20, left:20};
-    const mapWidth = width - margin.left - margin.right;
-    const mapHeight = height - margin.top - margin.bottom;
-    var map = svg.append("g")
-    .attr("transform","translate("+margin.left+","+margin.top+")");
 
-    const requestData = async () => {
-      const world = await d3.json("world_110m.json");
-      console.log(world);
-
-    var countries = topojson.feature(world, world.objects.countries);
-    var countriesMesh = topojson.mesh(world, world.objects.countries);
-    var projection = d3.geoMercator().fitSize([mapWidth, mapHeight], countries);
-    var path = d3.geoPath().projection(projection);
-    map.append("path")
-    .attr("class","graticule")
-    .attr("d", path( d3.geoGraticule10() ))
-    map.selectAll("path").data(countries.features)
-    .enter()
-    .append("path")
-    .attr("class","country")
-    .attr("d",path);
-    map.append("path")
-    .datum(countriesMesh)
-    .attr("class","outline")
-    .attr("d", path);
-
-
-    const svg1 = d3.select("#equalEarth");
-    const map1 = svg1.append("g")
-    .attr("transform","translate("+margin.left+","+margin.top+")");
-
-    var countries = topojson.feature(world, world.objects.countries);
-    var countriesMesh = topojson.mesh(world, world.objects.countries);
-    var projection = d3.geoEqualEarth().fitSize([mapWidth, mapHeight], countries);
-    var path = d3.geoPath().projection(projection);
-    map1.append("path")
-    .attr("class","graticule")
-    .attr("d", path( d3.geoGraticule10() ))
-    map1.selectAll("path").data(countries.features)
-    .enter()
-    .append("path")
-    .attr("class","country")
-    .attr("d",path);
-    map1.append("path")
-    .datum(countriesMesh)
-    .attr("class","outline")
-    .attr("d", path);
-
-
-
-
-    const svg2 = d3.select("#conicEqualArea");
-    const map2 = svg2.append("g")
-    .attr("transform","translate("+margin.left+","+margin.top+")");
-
-    var countries = topojson.feature(world, world.objects.countries);
-    var countriesMesh = topojson.mesh(world, world.objects.countries);
-    var projection = d3.geoConicEqualArea().fitSize([mapWidth, mapHeight], countries);
-    var path = d3.geoPath().projection(projection);
-    map2.append("path")
-    .attr("class","graticule")
-    .attr("d", path( d3.geoGraticule10() ))
-    map2.selectAll("path").data(countries.features)
-    .enter()
-    .append("path")
-    .attr("class","country")
-    .attr("d",path);
-    map2.append("path")
-    .datum(countriesMesh)
-    .attr("class","outline")
-    .attr("d", path);
 
 
 
@@ -158,21 +83,6 @@
   };
   requestData();
     </script>
-<p>
-  D. a) An advantage of the Mercator projection would be that it has the correct shapes for each country, so people can truly see how different countries look
-  b) A drawback would be that countries towards the equator look larger than they actually are, so it doesn't display true sizing.
-  c) Marine navigation
-</p>
-<p>
-  E. a)An advantage of the Equal Earth projections is the area of a region on the globe is proportional to the area of its projection.
-  b) Distortion near the poles is really bad.
-  c) Good for estimating the size of a country compared to other countries. Would use this to make a list of countries from largest to smallest.
-</p>
-<p>
-  F. a)Shape along the standard parallels is accurate and minimally distorted in the region between the standard parallels and those regions just beyond.
-  b)Neither shape nor linear scale is correct.
-  c)Used for small regions or countries but not continents.
-</p>
 
 
 
