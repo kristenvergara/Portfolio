@@ -1,5 +1,4 @@
 # Kristen Vergara Portfolio
-Kristen's Data Science Portfolio
 
 
 # [Project 1: New York 2016 Election Results](https://github.com/kristenvergara/newyork/tree/main)
